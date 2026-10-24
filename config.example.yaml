@@ -1,0 +1,32 @@
+# oa-gate example config — copy to config.yaml and fill in your own values.
+# NEVER commit config.yaml (it is gitignored). All values below are placeholders.
+
+server:
+  # MCP transports: stdio and/or streamable-http
+  listen: "127.0.0.1:8080"
+
+policy:
+  dry_run: true # keep true until you have tested with a real approval flow
+  require_confirm_for_writes: true
+  audit_db: "oa-gate.db" # SQLite by default; Postgres optional later
+
+platforms:
+  feishu:
+    enabled: true
+    app_id: "YOUR_FEISHU_APP_ID"
+    app_secret: "YOUR_FEISHU_APP_SECRET"
+    domain: "https://open.feishu.cn"
+  dingtalk:
+    enabled: false
+    app_key: "YOUR_DINGTALK_APP_KEY"
+    app_secret: "YOUR_DINGTALK_APP_SECRET"
+    agent_id: "YOUR_DINGTALK_AGENT_ID"
+  wecom:
+    enabled: false
+    corp_id: "YOUR_WECOM_CORP_ID"
+    agent_id: "YOUR_WECOM_AGENT_ID"
+    secret: "YOUR_WECOM_SECRET"
+
+allowlist:
+  users: []
+  groups: []
