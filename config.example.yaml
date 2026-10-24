@@ -2,25 +2,30 @@
 # NEVER commit config.yaml (it is gitignored). All values below are placeholders.
 
 server:
-  # MCP transports: stdio and/or streamable-http
   listen: "127.0.0.1:8080"
 
 policy:
   dry_run: true # keep true until you have tested with a real approval flow
   require_confirm_for_writes: true
-  audit_db: "oa-gate.db" # SQLite by default; Postgres optional later
+  audit_db: "oa-gate-audit.jsonl"
 
 platforms:
   feishu:
-    enabled: true
+    enabled: false
     app_id: "YOUR_FEISHU_APP_ID"
     app_secret: "YOUR_FEISHU_APP_SECRET"
     domain: "https://open.feishu.cn"
+    # Optional, needed for approval tools: the user whose tasks are queried.
+    user_id: "YOUR_FEISHU_USER_ID"
+    # Optional, needed for calendar tools.
+    calendar_id: "YOUR_FEISHU_CALENDAR_ID"
   dingtalk:
     enabled: false
     app_key: "YOUR_DINGTALK_APP_KEY"
     app_secret: "YOUR_DINGTALK_APP_SECRET"
     agent_id: "YOUR_DINGTALK_AGENT_ID"
+    # Optional, needed for approval read.
+    process_code: "YOUR_DINGTALK_PROCESS_CODE"
   wecom:
     enabled: false
     corp_id: "YOUR_WECOM_CORP_ID"
